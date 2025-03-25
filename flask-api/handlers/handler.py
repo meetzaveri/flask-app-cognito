@@ -7,27 +7,27 @@ from utils.cognitoGQLClient import CognitoGraphQLClient
 load_dotenv()
 
 def init_client_from_env():
-        """Initialize the GraphQL client using environment variables"""
-        
-        
-        required_vars = ['AWS_COGNITO_DOMAIN', 'AWS_COGNITO_APP_CLIENT_ID', 'AWS_COGNITO_APP_CLIENT_SECRET', 'GRAPHQL_ENDPOINT']
-        
-        # Check if all required variables are set
-        missing = [var for var in required_vars if not os.environ.get(var)]
-        if missing:
-            raise EnvironmentError(f"Missing required environment variables: {', '.join(missing)}")
-        
-        return CognitoGraphQLClient(
-            cognito_domain=os.environ['AWS_COGNITO_DOMAIN'],
-            client_id=os.environ['AWS_COGNITO_APP_CLIENT_ID'],
-            client_secret=os.environ['AWS_COGNITO_APP_CLIENT_SECRET'],
-            graphql_endpoint=os.environ['GRAPHQL_ENDPOINT']
-        )
+    """Initialize the GraphQL client using environment variables"""
 
-# Create an instance of CognitoGraphQLClient
+
+    required_vars = ['AWS_COGNITO_DOMAIN', 'AWS_COGNITO_APP_CLIENT_ID', 'AWS_COGNITO_APP_CLIENT_SECRET', 'GRAPHQL_ENDPOINT']
+
+    # Check if all required variables are set
+    missing = [var for var in required_vars if not os.environ.get(var)]
+    if missing:
+        raise EnvironmentError(f"Missing required environment variables: {', '.join(missing)}")
+
+    return CognitoGraphQLClient(
+        cognito_domain=os.environ['AWS_COGNITO_DOMAIN'],
+        client_id=os.environ['AWS_COGNITO_APP_CLIENT_ID'],
+        client_secret=os.environ['AWS_COGNITO_APP_CLIENT_SECRET'],
+        graphql_endpoint=os.environ['GRAPHQL_ENDPOINT']
+    )
+
 client = init_client_from_env()
 
 def get_data():
+    # Create an instance of CognitoGraphQLClient
 
     query = """
      query MyQuery {

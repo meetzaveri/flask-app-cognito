@@ -142,7 +142,7 @@ class CognitoGraphQLClient:
         headers = {
             'Content-Type': 'application/json',
             'Auth-Token': f'{self.access_token}',
-            'x-hasura-ddn-token': f'{os.environ['X_HASURA_DDN_TOKEN']}'
+            # 'x-hasura-ddn-token': f'{os.environ['X_HASURA_DDN_TOKEN']}'
         }
         
         payload = {
